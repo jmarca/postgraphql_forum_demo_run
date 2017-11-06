@@ -1,0 +1,23 @@
+{
+  "name": "forum_demo_run",
+  "version": "1.0.0",
+  "description": "scripts and such to run postgraphql forum demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap test/**/*.js --cov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmarca/postgraphql_forum_demo_run.git"
+  },
+  "keywords": [
+    "graphql",
+    "postgraphql"
+  ],
+  "author": "James E. Marca",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmarca/postgraphql_forum_demo_run/issues"
+  },
+  "homepage": "https://github.com/jmarca/postgraphql_forum_demo_run#readme"
+}
