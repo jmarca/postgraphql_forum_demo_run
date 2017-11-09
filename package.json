@@ -1,10 +1,13 @@
 {
-  "name": "forum_demo_run",
+  "name": "postgraphql_forum_demo_run",
   "version": "1.0.0",
   "description": "scripts and such to run postgraphql forum demo",
   "main": "index.js",
   "scripts": {
-    "test": "tap test/**/*.js --cov"
+    "test": "export SQITCH_DB_USER=${SQITCH_DB_USER:=postgres} && export SQITCH_DB_HOST=${SQITCH_DB_HOST:=127.0.0.1} && export SQITCH_DB_PORT=${SQITCH_DB_PORT:=5432} && export SQITCH_DB=${SQITCH_DB:=sqitch}  && export SQITCH_DB_URI=${SQITCH_DB_URI:=db:pg://$SQITCH_DB_USER@$SQITCH_DB_HOST:$SQITCH_DB_PORT/$SQITCH_DB} && pg_prove -p ${SQITCH_DB_PORT} -U ${SQITCH_DB_USER} -h ${SQITCH_DB_HOST} -d ${SQITCH_DB} test/*.sql",
+    "sqitch:deploy": "export SQITCH_DB_USER=${SQITCH_DB_USER:=postgres} && export SQITCH_DB_HOST=${SQITCH_DB_HOST:=127.0.0.1} && export SQITCH_DB_PORT=${SQITCH_DB_PORT:=5432} && export SQITCH_DB=${SQITCH_DB:=sqitch}  && export SQITCH_DB_URI=${SQITCH_DB_URI:=db:pg://$SQITCH_DB_USER@$SQITCH_DB_HOST:$SQITCH_DB_PORT/$SQITCH_DB} && sqitch deploy $SQITCH_DB_URI",
+    "sqitch:revert": "export SQITCH_DB_USER=${SQITCH_DB_USER:=postgres} && export SQITCH_DB_HOST=${SQITCH_DB_HOST:=127.0.0.1} && export SQITCH_DB_PORT=${SQITCH_DB_PORT:=5432} && export SQITCH_DB=${SQITCH_DB:=sqitch}  && export SQITCH_DB_URI=${SQITCH_DB_URI:=db:pg://$SQITCH_DB_USER@$SQITCH_DB_HOST:$SQITCH_DB_PORT/$SQITCH_DB} && sqitch revert -y $SQITCH_DB_URI",
+    "install": "npm run sqitch:deploy"
   },
   "repository": {
     "type": "git",
@@ -19,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/jmarca/postgraphql_forum_demo_run/issues"
   },
-  "homepage": "https://github.com/jmarca/postgraphql_forum_demo_run#readme"
+  "homepage": "https://github.com/jmarca/postgraphql_forum_demo_run#readme",
+  "dependencies": {
+    "postgraphql_forum_demo": "github:jmarca/forum_demo"
+  },
+  "devDependencies": {}
 }

@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=forum_demo_run
+%uri=https://github.com/jmarca/postgraphql_forum_demo_run
+
+forum_server_role [postgraphql_roles:server_role] 2017-11-09T18:37:40Z James E. Marca <james@activimetrics.com> # create a logged in user role
