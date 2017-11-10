@@ -1,0 +1,27 @@
+mutation {
+   registerUser (input:{inFirstName:"hermann",
+	inLastName:"munster",
+	inEmail:"hmc@munster.com",
+        inPassword:"aadams family"
+  }) {
+   user {
+    id
+    firstName
+    lastName
+    latestPost
+   }
+    clientMutationId
+   }
+
+
+}
+
+mutation {
+  authenticate (input:{
+    email:"hm@munster.com"
+    password:"aadams family"
+  }) {
+    clientMutationId
+    jwtToken
+  }
+}

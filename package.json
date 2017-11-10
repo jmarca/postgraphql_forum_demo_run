@@ -7,7 +7,8 @@
     "test": "export SQITCH_DB_USER=${SQITCH_DB_USER:=postgres} && export SQITCH_DB_HOST=${SQITCH_DB_HOST:=127.0.0.1} && export SQITCH_DB_PORT=${SQITCH_DB_PORT:=5432} && export SQITCH_DB=${SQITCH_DB:=sqitch}  && export SQITCH_DB_URI=${SQITCH_DB_URI:=db:pg://$SQITCH_DB_USER@$SQITCH_DB_HOST:$SQITCH_DB_PORT/$SQITCH_DB} && pg_prove -p ${SQITCH_DB_PORT} -U ${SQITCH_DB_USER} -h ${SQITCH_DB_HOST} -d ${SQITCH_DB} test/*.sql",
     "sqitch:deploy": "export SQITCH_DB_USER=${SQITCH_DB_USER:=postgres} && export SQITCH_DB_HOST=${SQITCH_DB_HOST:=127.0.0.1} && export SQITCH_DB_PORT=${SQITCH_DB_PORT:=5432} && export SQITCH_DB=${SQITCH_DB:=sqitch}  && export SQITCH_DB_URI=${SQITCH_DB_URI:=db:pg://$SQITCH_DB_USER@$SQITCH_DB_HOST:$SQITCH_DB_PORT/$SQITCH_DB} && sqitch deploy $SQITCH_DB_URI",
     "sqitch:revert": "export SQITCH_DB_USER=${SQITCH_DB_USER:=postgres} && export SQITCH_DB_HOST=${SQITCH_DB_HOST:=127.0.0.1} && export SQITCH_DB_PORT=${SQITCH_DB_PORT:=5432} && export SQITCH_DB=${SQITCH_DB:=sqitch}  && export SQITCH_DB_URI=${SQITCH_DB_URI:=db:pg://$SQITCH_DB_USER@$SQITCH_DB_HOST:$SQITCH_DB_PORT/$SQITCH_DB} && sqitch revert -y $SQITCH_DB_URI",
-    "install": "npm run sqitch:deploy"
+      "install": "npm run sqitch:deploy",
+      "start": "export SECRET=${SECRET:=backwared_bayball_kap} && export SQITCH_DB_USER=${SQITCH_DB_USER:=postgres} && export SQITCH_DB_HOST=${SQITCH_DB_HOST:=127.0.0.1} && export SQITCH_DB_PORT=${SQITCH_DB_PORT:=5432} && export SQITCH_DB=${SQITCH_DB:=sqitch}  && export FORUM_DB=${FORUM_DB:=forum_runner@${SQITCH_DB_HOST}:${SQITCH_DB_PORT}/${SQITCH_DB}} && postgraphql --connection postgres://${FORUM_DB} --schema forum_example --default-role forum_anonymous --secret ${SECRET} --token forum_example.jwt_token"
   },
   "repository": {
     "type": "git",
